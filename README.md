@@ -5,3 +5,5 @@
 - 两者最终的程序有区别，QtSpim从系统程序开始运行，并且最终需要返回，Mars直接从用户程序开始，最终y需要exit，syscall 10
 - sort.s为前者，sort2.s为后者
 
+### cup_lab1
+- 仿真实验
