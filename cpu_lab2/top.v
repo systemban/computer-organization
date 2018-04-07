@@ -33,22 +33,22 @@ module top;
 	end 
 
 	reg rst;
-	wire[5:0]rAddr,wAddr;
+	wire[5:0]rAddr,wAddr;	//以下，寄存器文件的接口
 	wire[31:0]rDout,wDin;
 	wire wEna;
 	REG_FILE regfile(clk,rst,rAddr,rDout,wAddr,wDin,wEna);
 	
 	
-	wire [5:0]rAddr_c,wAddr_c;
+	wire [5:0]rAddr_c,wAddr_c;	//c表示control，表示和control的接口
 	wire [31:0]wDin_c;
 	wire wEna_c;
 	
-	reg [5:0]rAddr_i,wAddr_i;
+	reg [5:0]rAddr_i,wAddr_i;	//i表示init，初始时的接口
 	reg [31:0]wDin_i;
 	reg wEna_i;
 	
 	
-	reg init;
+	reg init;	//当init=0时，状态机不改变状态，而且，寄存器文件的接口，使用i
 	assign rAddr=init ? rAddr_c:rAddr_i;
 	assign wAddr=init ? wAddr_c:wAddr_i;
 	assign wDin=init ? wDin_c:wDin_i;
@@ -57,15 +57,15 @@ module top;
 	Control control(clk,init,rDout,wDin_c,wEna_c,rAddr_c,wAddr_c);
 	
 	initial
-	begin
+	begin	//初始化
 		init=0;
 		wEna_i=1;
 		#10 wAddr_i=0;wDin_i=2;
 		#10 wAddr_i=1;wDin_i=2;
-		#10 init=1;
+		#10 init=1;	//control状态机开始改变状态
 	end
 	
-	always@(rAddr_c)
+	always@(rAddr_c)	//结束仿真标志
 	begin
 		if(rAddr_c==63)
 			$finish;

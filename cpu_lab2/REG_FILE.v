@@ -43,5 +43,6 @@ module REG_FILE(
 			mem[wAddr]=mem[wAddr];
 	end
 	
-	assign rDout=wEna ? (rAddr==wAddr ? wDin : mem[rAddr]) : mem[rAddr];
+	assign rDout=wEna ? (rAddr==wAddr ? wDin : mem[rAddr]) : mem[rAddr];	
+	//当写入使能有效，而且，读地址和写地址相同，则读出数值是当前写入的，不用等下一个时钟周期
 endmodule
