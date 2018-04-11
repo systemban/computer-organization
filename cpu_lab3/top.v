@@ -91,9 +91,9 @@ module top;
 	begin
 		init=0;
 		wEna_i=1;
-		WEA_i=1;
-		#2 ADDRA_i=0;DINA_i=2;
-		#2 ADDRA_i=1;DINA_i=2;
+		WEA_i=0;
+		//#2 ADDRA_i=0;DINA_i=2;
+		//#2 ADDRA_i=1;DINA_i=2;
 		#2 ADDRB_i=0;
 		#2 wAddr_i=0;wDin_i=DOUTB;
 		#2 ADDRA_i=1;
