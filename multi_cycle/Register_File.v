@@ -39,7 +39,7 @@ module Register_File(
 	initial
 	begin 
 		reg_file[0]=0;
-		reg_file[1]=20;
+		reg_file[1]=32;
 		reg_file[2]=2;
 		reg_file[3]=3;
 		reg_file[4]=4;		
